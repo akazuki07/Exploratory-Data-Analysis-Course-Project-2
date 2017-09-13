@@ -18,7 +18,7 @@ str(NEI)
 NEI_BALTIMORE<-filter(NEI,fips =="24510")
 str(NEI_BALTIMORE)
 
-data<-summarize(group_by(NEI_BALTIMORE, type,year), Emissions = mean(Emissions, na.rm = TRUE))
+data<-summarize(group_by(NEI_BALTIMORE, type,year), Emissions = sum(Emissions, na.rm = TRUE))
 data
 
 ggplot(data, aes(factor(year),Emissions), y=Emissions) +

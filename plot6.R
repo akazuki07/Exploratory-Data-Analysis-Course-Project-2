@@ -19,7 +19,7 @@ str(newdata)
 
 NEISCC_B_LA<-filter(NEI,fips =="24510" | fips =="06037")
 table(NEISCC_B_LA$fips)
-data<-summarize(group_by(NEISCC_B_LA, fips,year), Emissions = mean(Emissions, na.rm = TRUE))
+data<-summarize(group_by(NEISCC_B_LA, fips,year), Emissions = sum(Emissions, na.rm = TRUE))
 labels<-c("24510"="BALTIMORE (24510)", "06037"="LOS ANGELES (06037)")
 
 ggplot(data, aes(factor(year),Emissions), y=Emissions) +

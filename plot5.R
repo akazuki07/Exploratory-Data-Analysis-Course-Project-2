@@ -21,9 +21,9 @@ newdata <- NEISCC[motorVehicle, ]
 str(newdata)
 
 NEISCC_BALTIMORE<-filter(NEI,fips =="24510")
-data<-summarize(group_by(NEISCC_BALTIMORE,year), Emissions = mean(Emissions, na.rm = TRUE))
+data<-summarize(group_by(NEISCC_BALTIMORE,year), Emissions = sum(Emissions, na.rm = TRUE))
 
-plot5<-barplot(height=data$Emissions,names.arg=data$year,col=cm.colors(4),ylim=c(0,12.00))
+plot5<-barplot(height=data$Emissions,names.arg=data$year,col=cm.colors(4),ylim=c(0,4000))
 title(main = "Total PM2.5 emission (tons) in Baltimore City \n from motor vehicle sources, per year.",xlab="Years", ylab="Total PM2.5 emission (tons)")
 
 dev.copy(png, file="plot5.png")

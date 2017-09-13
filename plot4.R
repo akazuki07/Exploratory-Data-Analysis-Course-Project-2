@@ -26,10 +26,10 @@ coal<- grepl("coal", NEISCC$Short.Name, ignore.case=TRUE)
 newdata <- NEISCC[coal, ]
 head(newdata)
 
-data<-summarize(group_by(newdata, year), Emissions = mean(Emissions, na.rm = TRUE))
+data<-summarize(group_by(newdata, year), Emissions = sum(Emissions, na.rm = TRUE))
 data
-plot4<-barplot(height=data$Emissions,names.arg=data$year,col=cm.colors(4),ylim=c(0,60.00))
-title(main = "Total PM2.5 emission (tons) from coal, \n across the United States per year.",xlab="Years", ylab="Total PM2.5 emission (tons)")
+plot4<-barplot(height=data$Emissions/1000,names.arg=data$year,col=cm.colors(4),ylim=c(0,700))
+title(main = "Total PM2.5 emission (kilotons) from coal, \n across the United States per year.",xlab="Years", ylab="Total PM2.5 emission (kilotons)")
 
 dev.copy(png, file="plot4.png")
 dev.off()

@@ -22,8 +22,8 @@ str(years)
 head(years)
 
 data
-data<-summarize(years, Emissions = mean(Emissions, na.rm = TRUE))
-plot2<-barplot(height=data$Emissions,names.arg=data$year,col=rainbow(4),ylim=c(0,11.00))
+data<-summarize(years, Emissions = sum(Emissions, na.rm = TRUE))
+plot2<-barplot(height=data$Emissions,names.arg=data$year,col=rainbow(4),ylim=c(0,4000))
 title(main = "Total PM2.5 emission (tons) in Baltimore City,\n Maryland per Year",xlab="Years", ylab="Total PM2.5 emission (tons)")
 text(x = plot2, y = round(data$Emissions,3), label = round(data$Emissions,3), pos = 3, cex = 0.8, col = "black")
 
